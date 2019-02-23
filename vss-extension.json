@@ -1,0 +1,73 @@
+{
+  "manifestVersion": 1,
+  "id": "thatblokecalledjay-bugsnagautoversion",
+  "name": "Bugsnag Auto Version",
+  "version": "1.0.0",
+  "publisher": "ThatBlokeCalledJay",
+  "public": false,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/ThatBlokeCalledJay/bugsnag-auto-version"
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki/Getting-Started"
+    },
+    "repository": {
+      "uri": "https://github.com/ThatBlokeCalledJay/bugsnag-auto-version"
+    },
+    "issues": {
+      "uri": "https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/issues"
+    }
+  },
+  "scope": [
+    "vso.build"
+  ],
+  "description": "An Azure DevOps build task for updating your current Bugsnag AppVersion and notifying bugsnag of your release.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "JSON",
+    "Bugsnag",
+    "Notify",
+    "Version",
+    "Set",
+    "Update",
+    "Pipeline",
+    "Azure DevOps"
+  ],
+  "content": {
+    "license": {
+      "path": "license.txt"
+    },
+    "details": {
+      "path": "readme.md"
+    }
+  },
+  "icons": {
+    "default": "icon.png"
+  },
+  "contributions": [
+    {
+      "id": "BugsnagAutoVersion",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "BugsnagAutoVersion"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "BugsnagAutoVersion"
+    }
+  ]
+}

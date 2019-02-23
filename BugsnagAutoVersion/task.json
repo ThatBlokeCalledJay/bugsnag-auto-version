@@ -1,0 +1,152 @@
+{
+  "id": "e6189989-be88-461c-9579-8ae7d40d1209",
+  "name": "BugsnagAutoVersion",
+  "friendlyName": "Bugsnag Auto Version",
+  "description": "An Azure DevOps build task for updating your current Bugsnag AppVersion and notifying bugsnag of your release.",
+  "author": "ThatBlokeCalledJay",
+  "helpMarkDown": "[More Information](https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki)",
+  "category": "Azure Pipelines",
+  "visibility": [
+    "Build"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "2.117.0",
+  "instanceNameFormat": "Bugsnag Auto Version",
+  "inputs": [
+    {
+      "name": "JsonFile",
+      "label": "Json file",
+      "type": "filePath",
+      "required": true,
+      "helpMarkDown": "Your json file which holds the Bugsnag AppVersion value. This would typically be your appsettings.json file."
+    },
+    {
+      "name": "PropertyPath",
+      "label": "Json property path",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The json path to your Bugsnag AppVersion property. [More Help](https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki/Getting-Started)"
+    },
+    {
+      "name": "VersionMask",
+      "label": "Version mask",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "A mask to indicate which version values are to be automatically incremented. [More Help](https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki/Getting-Started)"
+    },
+    {
+      "name": "VersionVariable",
+      "label": "Version variable",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The name of your DevOps variable which will hold current version."
+    },
+    {
+      "name": "DevOpsPAT",
+      "label": "Azure DevOps PAT",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "Your Personal Access Token for Azure DevOps."
+    },
+    {
+      "name": "NotifyBugsnag",
+      "label": "Notify Bugsnag",
+      "type": "boolean",
+      "required": true,
+      "helpMarkDown": "Notify Bugsnag about your latest build. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)"
+    },
+    {
+      "name": "BugsnagUrl",
+      "label": "Bugsnag notify URL",
+      "type": "string",
+      "required": true,
+      "defaultValue": "https://build.bugsnag.com/",
+      "helpMarkDown": "Bugsnag notify URL. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true"
+    },
+    {
+      "name": "BugsnagApiKey",
+      "label": "Api key",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "Api key. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true"
+    },
+    {
+      "name": "BugsnagBuilderName",
+      "label": "Builder name",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "Builder name. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true"
+    },
+    {
+      "name": "BugsnagReleaseStage",
+      "label": "Release stage",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "Release stage. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true"
+    },
+    {
+      "name": "BugsnagAutoAssignRelease",
+      "label": "Auto assign release",
+      "type": "boolean",
+      "required": true,
+      "helpMarkDown": "Auto assign release. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true"
+    },
+    {
+      "name": "BugsnagSourceControl",
+      "label": "Include source control information",
+      "type": "boolean",
+      "required": true,
+      "helpMarkDown": "Include source control information when notifying Bugsnag of a build. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true"
+    },
+    {
+      "name": "BugsnagSCProvider",
+      "label": "Source control provider",
+      "type": "pickList",
+      "required": true,
+      "helpMarkDown": "[Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true && BugsnagSourceControl = true",
+      "defaultValue": "github",
+      "options": {
+        "github": "GitHub",
+        "github-enterprise": "GitHub Enterprise",
+        "bitbucket": "Bitbucket",
+        "bitbucket-server": "Bitbucket Server (formerly Stash)",
+        "gitlab": "GitLab",
+        "gitlab-onpremise": "GitLab CE or GitLab Enterprise"
+      }
+    },
+    {
+      "name": "BugsnagSCRepo",
+      "label": "Repository URL",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The URL of the repository containing the source code being deployed. [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true && BugsnagSourceControl = true"
+    },
+    {
+      "name": "BugsnagSCRevision",
+      "label": "Revision",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The source control SHA-1 hash for the code that has been built (short or long hash). [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "visibleRule": "NotifyBugsnag = true && BugsnagSourceControl = true"
+    }
+  ],
+  "dataSourceBindings": [],
+  "execution": {
+    "PowerShell3": {
+      "target": "task.ps1"
+    }
+  }
+}
