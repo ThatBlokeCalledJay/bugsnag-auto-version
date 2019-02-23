@@ -7,9 +7,11 @@ An Azure DevOps build task for updating your current Bugsnag AppVersion and noti
 Why not check out my other extensions:  
 
 **On GitHub**
+- [ThatBlokeCalledJay](https://github.com/ThatBlokeCalledJay)
 - [Bugsnag Notify](https://github.com/ThatBlokeCalledJay/bugsnag-notify)
 - [Auto App Version](https://github.com/ThatBlokeCalledJay/auto-app-version)
 
 **On Visual Studio Marketplace**
+- [ThatBlokeCalledJay](https://marketplace.visualstudio.com/publishers/ThatBlokeCalledJay)
 - [Bugsnag Notify](#)
 - [Auto App Version](https://marketplace.visualstudio.com/items?itemName=ThatBlokeCalledJay.thatblokecalledjay-autoappversion)
