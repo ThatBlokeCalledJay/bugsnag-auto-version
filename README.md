@@ -5,6 +5,9 @@ An Azure DevOps build task for updating your current Bugsnag AppVersion and noti
 
 > Note: Bugsnag Auto Version has been designed to work with Azure DevOps pipelines.
 
+### Looking for help getting setup.
+Checkout the getting started wiki [rigt here](https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki/Getting-Started).
+
 ### Want to notify Bugsnag during release instead of build?
 Why not check out my other extensions:  
 
