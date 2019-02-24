@@ -74,7 +74,7 @@ Once the new version number has been generated and saved, you can choose to noti
 
 ### Notify Bugsnag of your release further up-stream
 
-If you decide that notifying Bugsnag of your release is a little premature at the build stage, you can opt to use an additional extension, [Bugsnag Notify](#) which performs the same notification task, either later in your build, or maybe even from a release pipeline.
+If you decide that notifying Bugsnag of your release is a little premature at the build stage, you can opt to use an additional extension, [Bugsnag Notify](https://marketplace.visualstudio.com/items?itemName=ThatBlokeCalledJay.thatblokecalledjay-bugsnagnotify) which performs the same notification task, either later in your build, or maybe even from a release pipeline.
 
 ### Extras
 
