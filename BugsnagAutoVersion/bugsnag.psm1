@@ -40,17 +40,17 @@ function ValidateBugsnagArgs {
     [CmdletBinding()]
     param([BugsnagArgs]$bugsnagArgs)
     
-    if($null -eq $bugsnagArgs) {
+    if ($null -eq $bugsnagArgs) {
         Write-Error "Oops. You seem to have forgotton to pass any arguments. BugsnagArgs is null."
         return $false
-     }
+    }
 
-    if($null -eq $bugsnagArgs.ApiKey -or $bugsnagArgs.ApiKey.Length -eq 0) { 
+    if ($null -eq $bugsnagArgs.ApiKey -or $bugsnagArgs.ApiKey.Length -eq 0) { 
         Write-Error "Your Bugsnag Api Key is required."
         return $false
     }
 
-    if($null -eq $bugsnagArgs.AppVersion -or $bugsnagArgs.AppVersion.Length -eq 0) { 
+    if ($null -eq $bugsnagArgs.AppVersion -or $bugsnagArgs.AppVersion.Length -eq 0) { 
         Write-Error "Your App Version is required."
         return $false
     }
@@ -62,18 +62,30 @@ function GenerateBugsnagNotifyPayload {
     [CmdletBinding()]
     param([BugsnagArgs] $bugsnagArgs) 
 
+    $sourceControl = @{}
+    $meta = @{}
+
+    if ($bugsnagArgs.SCProvider -eq "azure-devops-u") {
+        $meta = @{
+            DevOpsGitCommit = "$($bugsnagArgs.SCRepo)/$($bugsnagArgs.SCRevision)"
+        }
+    }
+    else {
+        $sourceControl = @{
+            provider   = "$($bugsnagArgs.SCProvider)"
+            repository = "$($bugsnagArgs.SCRepo)"
+            revision   = "$($bugsnagArgs.SCRevision)"
+        }
+    }
+
     $argsHash = @{
         apiKey            = "$($bugsnagArgs.ApiKey)"
         appVersion        = "$($bugsnagArgs.AppVersion)"
         releaseStage      = "$($bugsnagArgs.ReleaseStage)"
         builderName       = "$($bugsnagArgs.BuilderName)"
         autoAssignRelease = $bugsnagArgs.AutoAssignRelease
-        sourceControl     = @{
-            provider   = "$($bugsnagArgs.SCProvider)"
-            repository = "$($bugsnagArgs.SCRepo)"
-            revision   = "$($bugsnagArgs.SCRevision)"
-        }
-        metadata          = @{}
+        sourceControl     = $sourceControl
+        metadata          = $meta
     }
 
     $jsonOutput = $argsHash  | ConvertTo-Json -Depth 10 -Compress |  ForEach-Object { [System.Text.RegularExpressions.Regex]::Unescape($_) }

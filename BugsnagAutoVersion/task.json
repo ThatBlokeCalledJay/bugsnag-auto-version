@@ -114,16 +114,17 @@
       "label": "Source control provider",
       "type": "pickList",
       "required": true,
-      "helpMarkDown": "[Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
+      "helpMarkDown": "Choose your repository provider. For help with 'Azure DevOps Git (unofficial)' [Go to the Getting Started Docs](https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki/Getting-Started). For the other options [Go to the Bugsnag Docs](https://bugsnagbuildapi.docs.apiary.io/)",
       "visibleRule": "NotifyBugsnag = true && BugsnagSourceControl = true",
-      "defaultValue": "github",
+      "defaultValue": "azure-devops-u",
       "options": {
         "github": "GitHub",
         "github-enterprise": "GitHub Enterprise",
         "bitbucket": "Bitbucket",
         "bitbucket-server": "Bitbucket Server (formerly Stash)",
         "gitlab": "GitLab",
-        "gitlab-onpremise": "GitLab CE or GitLab Enterprise"
+        "gitlab-onpremise": "GitLab CE or GitLab Enterprise",
+        "azure-devops-u":"Azure DevOps Git (unofficial)"
       }
     },
     {
