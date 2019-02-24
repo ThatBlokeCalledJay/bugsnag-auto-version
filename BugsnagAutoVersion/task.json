@@ -1,5 +1,5 @@
 {
-  "id": "e6189989-be88-461c-9579-8ae7d40d1209",
+  "id": "504a4e98-28f7-41c2-b8c3-edcbdefc20a7",
   "name": "BugsnagAutoVersion",
   "friendlyName": "Bugsnag Auto Version",
   "description": "An Azure DevOps build task for updating your current Bugsnag AppVersion and notifying bugsnag of your release.",
@@ -11,9 +11,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "1",
+    "Major": "0",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "1"
   },
   "minimumAgentVersion": "2.117.0",
   "instanceNameFormat": "Bugsnag Auto Version",
@@ -149,5 +149,9 @@
     "PowerShell3": {
       "target": "task.ps1"
     }
-  }
+  },
+  "OutputVariables": [{
+    "name" : "BUGSNAG_AUTO_VERSION",
+    "description" : "This variable holds the latest bugsnag version generated during this task's execution."
+}]
 }
