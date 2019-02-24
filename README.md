@@ -76,15 +76,15 @@ Once the new version number has been generated and saved, you can choose to noti
 
 If you decide that notifying Bugsnag of your release is a little premature at the build stage, you can opt to use an additional extension, [Bugsnag Notify](#) which performs the same notification task, either later in your build, or maybe even from a release pipeline.
 
-### Extra stuff
+### Extras
 
 - BAV sets an `Output Variable` which can be accessed by other tasks further up the build stream. 
 
-### Looking for help getting setup.
+## Need help getting setup.
 
 Check out the [wiki](https://github.com/ThatBlokeCalledJay/bugsnag-auto-version/wiki/Getting-Started) on getting started.  
 
-### Version Number Madness
+### Version number madness
 
 Check out the following scenario:
 
