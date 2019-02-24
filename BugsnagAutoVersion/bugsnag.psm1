@@ -67,7 +67,7 @@ function GenerateBugsnagNotifyPayload {
 
     if ($bugsnagArgs.SCProvider -eq "azure-devops-u") {
         $meta = @{
-            DevOpsGitCommit = "$($bugsnagArgs.SCRepo)/$($bugsnagArgs.SCRevision)"
+            DevOpsGitCommit =  Join-Url -parts $bugsnagArgs.SCRepo,$bugsnagArgs.SCRevision
         }
     }
     else {
@@ -91,6 +91,16 @@ function GenerateBugsnagNotifyPayload {
     $jsonOutput = $argsHash  | ConvertTo-Json -Depth 10 -Compress |  ForEach-Object { [System.Text.RegularExpressions.Regex]::Unescape($_) }
 
     return $jsonOutput
+}
+
+function Join-Url
+{
+    param
+    (
+        $parts = $null
+    )
+
+    ($parts | Where-Object { $_ } | ForEach-Object { $_.trim('/').trim() } | Where-Object { $_ } ) -join '/'  
 }
 
 function NotifyBugsnag {
