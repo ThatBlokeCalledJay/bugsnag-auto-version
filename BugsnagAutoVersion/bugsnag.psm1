@@ -67,7 +67,7 @@ function GenerateBugsnagNotifyPayload {
 
     if ($bugsnagArgs.SCProvider -eq "azure-devops-u") {
         $meta = @{
-            DevOpsGitCommit =  Join-Url -parts $bugsnagArgs.SCRepo,$bugsnagArgs.SCRevision
+            DevOpsGitCommit =  Join-Url -parts $bugsnagArgs.SCRepo,"commit",$bugsnagArgs.SCRevision
         }
     }
     else {
