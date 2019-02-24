@@ -175,6 +175,9 @@ $bugsnagArgs.AppVersion = $newVersionValue
 
 Write-Host "New version generated: $newVersionValue";
 
+# ---------------------------------------------------------------- Populate output variable
+
+Write-Host "##vso[task.setvariable variable=BUGSNAG_AUTO_VERSION;isOutput=true;]$newVersionValue"
 # ---------------------------------------------------------------- Display Info
 
 Write-Host "=============================================================================="
